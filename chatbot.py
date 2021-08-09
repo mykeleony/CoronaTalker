@@ -1,0 +1,1 @@
+# Script de funcionamento do chatbot CoronaTalker
