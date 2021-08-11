@@ -16,7 +16,7 @@ import ssl
 import re
 
 # Conectando-se (ou criando) ao banco de dados e criando suas tabelas:
-conn = sqlite3.connect('q&a_coronavirus.sqlite')
+conn = sqlite3.connect('../q&a_coronavirus.sqlite')
 cur = conn.cursor()
 
 cur.executescript('''
