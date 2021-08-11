@@ -16,7 +16,7 @@ import ssl
 import re
 
 # Conectando-se (ou criando) ao banco de dados e criando suas tabelas:
-conn = sqlite3.connect('../q&a_coronavirus.sqlite')
+conn = sqlite3.connect('app/q&a_coronavirus.sqlite')
 cur = conn.cursor()
 
 cur.executescript('''
@@ -73,7 +73,7 @@ while n_pagina < 7:
         resposta = re.search('content:.*<p(.*)<', str(html_resposta))[1]
 
         # Retirando eventuais comandos HTML contidos na resposta extraída e retirando os espaços laterais do texto.
-        resposta_formatada = re.sub('<[^<]+?>|dir="ltr"', '', resposta).strip()
+        resposta_formatada = re.sub('<[^<]+?>|dir="ltr"|>', '', resposta).strip()
 
         cur.execute('INSERT INTO Respostas_CoronaTalker (resposta) VALUES (?)', (resposta_formatada,))
 
