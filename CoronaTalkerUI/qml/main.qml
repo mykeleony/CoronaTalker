@@ -86,6 +86,7 @@ Window {
 
             btnMaximize.btnIconSource = "../images/svg_images/maximize_icon.svg"
         }
+
     }
 
     Rectangle {
@@ -264,6 +265,7 @@ Window {
                 anchors.right: parent.right
                 anchors.top: topBar.bottom
                 anchors.bottom: parent.bottom
+                clip: false
                 anchors.topMargin: 0
                 
                 Rectangle {
@@ -307,6 +309,13 @@ Window {
                             text: qsTr("Página Inicial")
                             isActiveMenu: true
                             clip: false
+                            onClicked: {
+                                btnHome.isActiveMenu = true
+                                btnCovidGlobal.isActiveMenu = false
+                                btnQeA.isActiveMenu = false
+                                btnCovidBrazil.isActiveMenu = false
+                                pagesView.setSource("pages/homePage.qml")
+                            }
                         }
 
                         LeftMenuBtn {
@@ -317,6 +326,13 @@ Window {
                             clip: false
                             btnIconSource: "../images/svg_images/question_mark.png"
                             isActiveMenu: false
+                            onClicked: {
+                                btnHome.isActiveMenu = false
+                                btnCovidGlobal.isActiveMenu = false
+                                btnQeA.isActiveMenu = true
+                                btnCovidBrazil.isActiveMenu = false
+                                pagesView.setSource("pages/qeaPagina.qml")
+                            }
                         }
 
                         LeftMenuBtn {
@@ -327,6 +343,13 @@ Window {
                             isActiveMenu: false
                             btnIconSource: "../images/svg_images/earth_icon.png"
                             clip: false
+                            onClicked: {
+                                btnHome.isActiveMenu = false
+                                btnCovidGlobal.isActiveMenu = true
+                                btnQeA.isActiveMenu = false
+                                btnCovidBrazil.isActiveMenu = false
+                                pagesView.setSource("pages/Covid-19noMundoPagina.qml")
+                            }
                         }
 
                         LeftMenuBtn {
@@ -336,6 +359,13 @@ Window {
                             text: qsTr("Covid-19 no Brasil")
                             btnIconSource: "../images/svg_images/brasil_icon.png"
                             clip: false
+                            onClicked: {
+                                btnHome.isActiveMenu = false
+                                btnCovidGlobal.isActiveMenu = false
+                                btnQeA.isActiveMenu = false
+                                btnCovidBrazil.isActiveMenu = true
+                                pagesView.setSource("pages/Covid-19noBrasilPagina.qml")
+                            }
                         }
 
                     }
@@ -348,10 +378,28 @@ Window {
                     anchors.right: parent.right
                     anchors.top: parent.top
                     anchors.bottom: parent.bottom
+                    clip: true
                     anchors.rightMargin: 0
                     anchors.leftMargin: 0
                     anchors.bottomMargin: 25
                     anchors.topMargin: 0
+
+
+                    /*
+                    StackView {
+                        id: stackView
+                        anchors.fill: parent
+                        initialItem: Qt.resolvedUrl("pages/homePage.qml")
+                    }
+                    */
+
+                    Loader {
+                        id: pagesView
+                        anchors.fill: parent
+                        source: Qt.resolvedUrl("pages/homePage.qml")
+                        visible: true
+                    }
+
                 }
                 
                 Rectangle {
@@ -420,7 +468,7 @@ Window {
             }
         }
     }
-
+    /*
     DropShadow {
         anchors.fill: bg
         horizontalOffset: 0
@@ -431,7 +479,7 @@ Window {
         source: bg
         z: 0
     }
-
+    */
     MouseArea {
         id: resizeLeft
         width: 10
@@ -489,6 +537,6 @@ Window {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.66}D{i:30}D{i:37}
+    D{i:0;formeditorZoom:0.66}D{i:31}
 }
 ##^##*/
