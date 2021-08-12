@@ -17,6 +17,45 @@ Window {
     //Removendo a barra de título:
     flags: Qt.Window | Qt.FramelessWindowHint
 
+    property int statusJanela: 0
+    property int margemJanela: 10
+
+    // Funções internas para minimizar, maximizar, restaurar e fechar as páginas:
+    QtObject {
+        id: internal
+
+        function maximizar_Restaurar() {
+            if(statusJanela == 0) {
+                statusJanela = 1
+                margemJanela = 0
+                btnMaximize.btnIconSource = "../images/svg_images/restore_icon.svg"
+                janelaPrincipal.showMaximized()
+            }
+
+            else {
+                statusJanela = 0
+                margemJanela = 10
+                janelaPrincipal.showNormal()
+                btnMaximize.btnIconSource = "../images/svg_images/maximize_icon.svg"
+            }
+        }
+
+        function ifMaximizedWindowRestore() {
+            if (statusJanela == 1) {
+                janelaPrincipal.showNormal()
+                btnMaximize.btnIconSource = "../images/svg_images/maximize_icon.svg"
+                statusJanela = 0
+                margemJanela = 10
+            }
+        }
+
+        function restoreMargins() {
+            statusJanela = 0
+            margemJanela = 10
+            btnMaximize.btnIconSource = "../images/svg_images/maximize_icon.svg"
+        }
+    }
+
     Rectangle {
         id: bg
         color: "#bf4040"
@@ -26,10 +65,10 @@ Window {
         anchors.right: parent.right
         anchors.top: parent.top
         anchors.bottom: parent.bottom
-        anchors.rightMargin: 10
-        anchors.leftMargin: 10
-        anchors.bottomMargin: 10
-        anchors.topMargin: 10
+        anchors.rightMargin: margemJanela
+        anchors.leftMargin: margemJanela
+        anchors.bottomMargin: margemJanela
+        anchors.topMargin: margemJanela
         
         Rectangle {
             id: appContainer
@@ -112,6 +151,7 @@ Window {
                     DragHandler {
                         onActiveChanged: if(active) {
                                              janelaPrincipal.startSystemMove()
+                                             internal.ifMaximizedWindowRestore()
                                          }
                     }
 
@@ -163,17 +203,22 @@ Window {
                     
                     TopBarButton {
                         id: btnMinimize
-
-                   }
+                        onClicked: {
+                            janelaPrincipal.showMinimized()
+                            internal.restoreMargins()
+                        }
+                    }
 
                     TopBarButton {
                         id: btnMaximize
+                        onClicked: internal.maximizar_Restaurar()
                         btnIconSource: "../images/svg_images/maximize_icon.svg"
                    }
 
                     TopBarButton {
                         id: btnClose
                         btnColorClicked: "#ff0000"
+                        onClicked: janelaPrincipal.close()
                         btnIconSource: "../images/svg_images/close_icon.svg"
                    }
                 }
