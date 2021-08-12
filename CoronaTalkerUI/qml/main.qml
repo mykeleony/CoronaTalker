@@ -2,14 +2,17 @@ import QtQuick 2.15
 import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
 
+import "controls"
+
 Window {
     id: janelaPrincipal
     width: 1000
     height: 580
     visible: true
     color: "#00000000"
+    property alias row: row
     title: qsTr("CoronaTalker")
-
+    
     Rectangle {
         id: bg
         color: "#bf4040"
@@ -23,7 +26,7 @@ Window {
         anchors.leftMargin: 10
         anchors.bottomMargin: 10
         anchors.topMargin: 10
-
+        
         Rectangle {
             id: appContainer
             color: "#00000000"
@@ -32,7 +35,7 @@ Window {
             anchors.leftMargin: 1
             anchors.bottomMargin: 1
             anchors.topMargin: 1
-
+            
             Rectangle {
                 id: topBar
                 height: 60
@@ -43,18 +46,11 @@ Window {
                 anchors.rightMargin: 0
                 anchors.leftMargin: 0
                 anchors.topMargin: 0
+                
+                ToggleButton {
 
-                Button {
-                    id: toggle_Btn
-                    width: 70
-                    height: 60
-                    text: qsTr("Toogle")
-                    anchors.left: parent.left
-                    anchors.top: parent.top
-                    anchors.leftMargin: 0
-                    anchors.topMargin: 0
                 }
-
+                
                 Rectangle {
                     id: topBarDescription
                     y: 41
@@ -66,7 +62,7 @@ Window {
                     anchors.rightMargin: 0
                     anchors.leftMargin: 70
                     anchors.bottomMargin: 0
-
+                    
                     Label {
                         id: labelTopInfo
                         color: "#e7e4e4"
@@ -80,7 +76,7 @@ Window {
                         anchors.leftMargin: 10
                         anchors.topMargin: 0
                     }
-
+                    
                     Label {
                         id: labelRightInfo
                         color: "#e7e4e4"
@@ -96,7 +92,7 @@ Window {
                         anchors.bottomMargin: 0
                     }
                 }
-
+                
                 Rectangle {
                     id: titleBar
                     height: 35
@@ -107,7 +103,7 @@ Window {
                     anchors.rightMargin: 105
                     anchors.leftMargin: 70
                     anchors.topMargin: 0
-
+                    
                     Image {
                         id: iconApp
                         width: 28
@@ -120,7 +116,7 @@ Window {
                         anchors.topMargin: 0
                         fillMode: Image.PreserveAspectFit
                     }
-
+                    
                     Label {
                         id: label
                         color: "#ffffff"
@@ -132,10 +128,46 @@ Window {
                         verticalAlignment: Text.AlignVCenter
                         font.pointSize: 10
                         anchors.leftMargin: 5
+                        
+                        Row {
+                            id: row
+                            x: 753
+                            y: 8
+                            width: 200
+                            height: 400
+                        }
                     }
                 }
-            }
+                
+                Row {
+                    id: rowBtns
+                    x: 673
+                    width: 105
+                    height: 35
+                    anchors.right: parent.right
+                    anchors.top: parent.top
+                    anchors.rightMargin: 0
+                    anchors.topMargin: 0
+                    
+                    TopBarButton {
+                        id: btnMinimize
 
+                   }
+
+                    TopBarButton {
+                        id: btnMaximize
+                        btnIconSource: "../images/svg_images/maximize_icon.svg"
+                   }
+
+                    TopBarButton {
+                        id: btnClose
+                        btnColorClicked: "#ff0000"
+                        btnIconSource: "../images/svg_images/close_icon.svg"
+                   }
+                }
+                
+            }
+            
             Rectangle {
                 id: content
                 color: "#00000000"
@@ -144,7 +176,7 @@ Window {
                 anchors.top: topBar.bottom
                 anchors.bottom: parent.bottom
                 anchors.topMargin: 0
-
+                
                 Rectangle {
                     id: leftMenu
                     width: 70
@@ -155,9 +187,10 @@ Window {
                     anchors.leftMargin: 0
                     anchors.bottomMargin: 0
                     anchors.topMargin: 0
-
+                    
                     Column {
                         id: columnMenus
+                        visible: true
                         anchors.left: parent.left
                         anchors.right: parent.right
                         anchors.top: parent.top
@@ -167,14 +200,14 @@ Window {
                         anchors.leftMargin: 0
                         anchors.bottomMargin: 90
                         anchors.topMargin: 0
-
+                        
                         Button {
                             id: button
                             text: qsTr("Button")
                         }
                     }
                 }
-
+                
                 Rectangle {
                     id: contentPages
                     color: "#00000000"
@@ -187,7 +220,7 @@ Window {
                     anchors.bottomMargin: 25
                     anchors.topMargin: 0
                 }
-
+                
                 Rectangle {
                     id: rectangle
                     color: "#b12c2c"
@@ -199,7 +232,7 @@ Window {
                     anchors.leftMargin: 0
                     anchors.bottomMargin: 0
                     anchors.topMargin: 0
-
+                    
                     Label {
                         id: labelTopInfo1
                         color: "#e7e4e4"
@@ -221,7 +254,6 @@ Window {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.66}D{i:4}D{i:6}D{i:7}D{i:5}D{i:9}D{i:10}D{i:8}D{i:13}D{i:15}
-D{i:17}D{i:16}
+    D{i:0;formeditorZoom:0.66}
 }
 ##^##*/

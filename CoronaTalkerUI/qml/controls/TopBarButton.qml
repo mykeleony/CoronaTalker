@@ -3,10 +3,10 @@ import QtQuick.Controls 2.15
 import QtGraphicalEffects 1.15
 
 Button {
-    id: btnToggle
+    id: btnTopBar
 
     // Customizando o botão:
-    property url btnIconSource: "../../images/svg_images/menu_icon.svg"
+    property url btnIconSource: "../../images/svg_images/minimize_icon.svg"
     property color btnColorDefault: "#a11919"
     property color btnColorMouseOver: "#bf3434"
     property color btnColorClicked: "#800000"
@@ -15,38 +15,38 @@ Button {
         id: internal
 
         // Mudança de cor em Mouse Over e Mouse Click:
-        property var dinamycColor: if(btnToggle.down) {
-                                       btnToggle.down ? btnColorClicked : btnColorDefault
+        property var dinamycColor: if(btnTopBar.down) {
+                                       btnTopBar.down ? btnColorClicked : btnColorDefault
                                    } else {
-                                       btnToggle.hovered ? btnColorMouseOver : btnColorDefault
+                                       btnTopBar.hovered ? btnColorMouseOver : btnColorDefault
                                    }
     }
 
-    implicitWidth: 70
-    implicitHeight: 60
-    
+    implicitWidth: 35
+    implicitHeight: 35
+
     background: Rectangle {
         id: bgBtn
         color: internal.dinamycColor
-        
+
         Image {
             id: iconBtn
             source: btnIconSource
             anchors.verticalCenter: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
-            height: 25
-            width: 25
+            height: 16
+            width: 16
             fillMode: Image.PreserveAspectFit
             visible: false
         }
-        
+
         ColorOverlay {
             anchors.fill: iconBtn
             source: iconBtn
             color: "#ffffff"
             antialiasing: false
         }
-        
+
     }
 }
 
