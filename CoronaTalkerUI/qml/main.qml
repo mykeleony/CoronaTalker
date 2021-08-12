@@ -8,7 +8,9 @@ import "controls"
 Window {
     id: janelaPrincipal
     width: 1000
+    minimumWidth: 800
     height: 580
+    minimumHeight: 500
     visible: true
     color: "#00000000"
     title: qsTr("CoronaTalker")
@@ -24,18 +26,39 @@ Window {
     QtObject {
         id: internal
 
+        function resetResizedBorders() {
+            // Controlando a visibilidade dos cursores de redimensionamento
+            resizeLeft.visible = true
+            resizeRight.visible = true
+            resizeBottom.visible = true
+            resizeDiagonal.visible = true
+        }
+
         function maximizar_Restaurar() {
             if(statusJanela == 0) {
+                janelaPrincipal.showMaximized()
+
                 statusJanela = 1
                 margemJanela = 0
+
+                // Controlando a visibilidade dos cursores de redimensionamento
+                resizeLeft.visible = false
+                resizeRight.visible = false
+                resizeBottom.visible = false
+                resizeDiagonal.visible = false
+
                 btnMaximize.btnIconSource = "../images/svg_images/restore_icon.svg"
-                janelaPrincipal.showMaximized()
             }
 
             else {
+                janelaPrincipal.showNormal()
+
                 statusJanela = 0
                 margemJanela = 10
-                janelaPrincipal.showNormal()
+
+                // Controlando a visibilidade dos cursores de redimensionamento
+                internal.resetResizedBorders()
+
                 btnMaximize.btnIconSource = "../images/svg_images/maximize_icon.svg"
             }
         }
@@ -43,15 +66,24 @@ Window {
         function ifMaximizedWindowRestore() {
             if (statusJanela == 1) {
                 janelaPrincipal.showNormal()
-                btnMaximize.btnIconSource = "../images/svg_images/maximize_icon.svg"
+
                 statusJanela = 0
                 margemJanela = 10
+
+                // Controlando a visibilidade dos cursores de redimensionamento
+                internal.resetResizedBorders()
+
+                btnMaximize.btnIconSource = "../images/svg_images/maximize_icon.svg"
             }
         }
 
         function restoreMargins() {
             statusJanela = 0
             margemJanela = 10
+
+            // Controlando a visibilidade dos cursores de redimensionamento
+            internal.resetResizedBorders()
+
             btnMaximize.btnIconSource = "../images/svg_images/maximize_icon.svg"
         }
     }
@@ -213,14 +245,14 @@ Window {
                         id: btnMaximize
                         onClicked: internal.maximizar_Restaurar()
                         btnIconSource: "../images/svg_images/maximize_icon.svg"
-                   }
+                    }
 
                     TopBarButton {
                         id: btnClose
                         btnColorClicked: "#ff0000"
                         onClicked: janelaPrincipal.close()
                         btnIconSource: "../images/svg_images/close_icon.svg"
-                   }
+                    }
                 }
                 
             }
@@ -347,12 +379,48 @@ Window {
                         anchors.leftMargin: 10
                         anchors.bottomMargin: 0
                     }
+
+                    MouseArea {
+                        id: resizeDiagonal
+                        x: 884
+                        y: 0
+                        width: 25
+                        height: 25
+                        anchors.right: parent.right
+                        anchors.bottom: parent.bottom
+                        anchors.bottomMargin: 0
+                        anchors.rightMargin: 0
+                        cursorShape: Qt.SizeFDiagCursor
+
+                        Image {
+                            id: image
+                            width: 25
+                            height: 25
+                            opacity: 0.5
+                            anchors.left: parent.left
+                            anchors.top: parent.top
+                            source: "../images/svg_images/resize_icon.svg"
+                            anchors.topMargin: 5
+                            anchors.leftMargin: 5
+                            sourceSize.height: 16
+                            sourceSize.width: 16
+                            fillMode: Image.PreserveAspectFit
+                            antialiasing: false
+                        }
+
+                        DragHandler {
+                            target: null
+                            onActiveChanged: if (active) {
+                                                 janelaPrincipal.startSystemResize(Qt.RightEdge | Qt.BottomEdge)
+                                             }
+                        }
+
+                    }
                 }
             }
         }
     }
 
-    /*
     DropShadow {
         anchors.fill: bg
         horizontalOffset: 0
@@ -363,13 +431,64 @@ Window {
         source: bg
         z: 0
     }
-    */
+
+    MouseArea {
+        id: resizeLeft
+        width: 10
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.leftMargin: 0
+        anchors.bottomMargin: 10
+        anchors.topMargin: 10
+        cursorShape: Qt.SizeHorCursor
+
+        DragHandler {
+            target: null
+            onActiveChanged: if (active) { janelaPrincipal.startSystemResize(Qt.LeftEdge) }
+        }
+    }
+
+    MouseArea {
+        id: resizeRight
+        width: 10
+        anchors.right: parent.right
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.rightMargin: 0
+        anchors.bottomMargin: 10
+        anchors.topMargin: 10
+        cursorShape: Qt.SizeHorCursor
+
+        DragHandler {
+            target: null
+            onActiveChanged: if (active) { janelaPrincipal.startSystemResize(Qt.RightEdge) }
+        }
+    }
+
+    MouseArea {
+        id: resizeBottom
+        height: 10
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        anchors.rightMargin: 10
+        anchors.leftMargin: 10
+        anchors.bottomMargin: 0
+        cursorShape: Qt.SizeVerCursor
+
+        DragHandler {
+            target: null
+            onActiveChanged: if (active) { janelaPrincipal.startSystemResize(Qt.BottomEdge) }
+        }
+    }
+
 }
 
 
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.66}
+    D{i:0;formeditorZoom:0.66}D{i:30}D{i:37}
 }
 ##^##*/
