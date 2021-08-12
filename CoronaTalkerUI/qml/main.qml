@@ -179,11 +179,12 @@ Window {
                 
                 Rectangle {
                     id: leftMenu
-                    width: 70
+                    width: 230
                     color: "#a11919"
                     anchors.left: parent.left
                     anchors.top: parent.top
                     anchors.bottom: parent.bottom
+                    clip: true
                     anchors.leftMargin: 0
                     anchors.bottomMargin: 0
                     anchors.topMargin: 0
@@ -195,16 +196,50 @@ Window {
                         anchors.right: parent.right
                         anchors.top: parent.top
                         anchors.bottom: parent.bottom
-                        clip: true
+                        clip: false
                         anchors.rightMargin: 8
                         anchors.leftMargin: 0
                         anchors.bottomMargin: 90
                         anchors.topMargin: 0
                         
-                        Button {
-                            id: button
-                            text: qsTr("Button")
+                        LeftMenuBtn {
+                            id: btnHome
+                            width: leftMenu.width
+                            visible: true
+                            text: qsTr("Página Inicial")
+                            isActiveMenu: true
+                            clip: false
                         }
+
+                        LeftMenuBtn {
+                            id: btnQeA
+                            width: leftMenu.width
+                            visible: true
+                            text: qsTr("Dúvidas comuns")
+                            clip: false
+                            btnIconSource: "../images/svg_images/question_mark.png"
+                            isActiveMenu: false
+                        }
+
+                        LeftMenuBtn {
+                            id: btnCovidGlobal
+                            width: leftMenu.width
+                            visible: true
+                            text: qsTr("Covid-19 no Mundo")
+                            isActiveMenu: false
+                            btnIconSource: "../images/svg_images/earth_icon.png"
+                            clip: false
+                        }
+
+                        LeftMenuBtn {
+                            id: btnCovidBrazil
+                            width: leftMenu.width
+                            visible: true
+                            text: qsTr("Covid-19 no Brasil")
+                            btnIconSource: "../images/svg_images/brasil_icon.png"
+                            clip: false
+                        }
+
                     }
                 }
                 
@@ -252,8 +287,10 @@ Window {
     }
 }
 
+
+
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.66}
+    D{i:0;formeditorZoom:0.66}D{i:20}D{i:21}D{i:22}
 }
 ##^##*/
