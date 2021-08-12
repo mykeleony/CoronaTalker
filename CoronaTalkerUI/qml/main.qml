@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
+import QtGraphicalEffects 1.15
 
 import "controls"
 
@@ -10,9 +11,12 @@ Window {
     height: 580
     visible: true
     color: "#00000000"
-    property alias row: row
     title: qsTr("CoronaTalker")
-    
+    property alias row: row
+
+    //Removendo a barra de título:
+    flags: Qt.Window | Qt.FramelessWindowHint
+
     Rectangle {
         id: bg
         color: "#bf4040"
@@ -48,7 +52,7 @@ Window {
                 anchors.topMargin: 0
                 
                 ToggleButton {
-
+                    onClicked: animationMenu.running = true
                 }
                 
                 Rectangle {
@@ -103,14 +107,22 @@ Window {
                     anchors.rightMargin: 105
                     anchors.leftMargin: 70
                     anchors.topMargin: 0
-                    
+
+                    // Possibilitando movimentação da janela do aplicativo:
+                    DragHandler {
+                        onActiveChanged: if(active) {
+                                             janelaPrincipal.startSystemMove()
+                                         }
+                    }
+
                     Image {
                         id: iconApp
-                        width: 28
+                        width: 22
+                        height: 22
                         anchors.left: parent.left
                         anchors.top: parent.top
                         anchors.bottom: parent.bottom
-                        source: "qrc:/qtquickplugin/images/template_image.png"
+                        source: "../images/svg_images/CoronaTalker_icon.png"
                         anchors.leftMargin: 5
                         anchors.bottomMargin: 0
                         anchors.topMargin: 0
@@ -179,7 +191,7 @@ Window {
                 
                 Rectangle {
                     id: leftMenu
-                    width: 230
+                    width: 70
                     color: "#a11919"
                     anchors.left: parent.left
                     anchors.top: parent.top
@@ -189,6 +201,15 @@ Window {
                     anchors.bottomMargin: 0
                     anchors.topMargin: 0
                     
+                    PropertyAnimation {
+                        id: animationMenu
+                        target: leftMenu
+                        property: "width"
+                        to: if(leftMenu.width == 70) return 230; else return 70
+                        duration: 430
+                        easing.type: Easing.InOutBack
+                    }
+
                     Column {
                         id: columnMenus
                         visible: true
@@ -285,12 +306,25 @@ Window {
             }
         }
     }
+
+    /*
+    DropShadow {
+        anchors.fill: bg
+        horizontalOffset: 0
+        verticalOffset: 0
+        radius: 10
+        samples: 16
+        color: "#9c0202"
+        source: bg
+        z: 0
+    }
+    */
 }
 
 
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.66}D{i:20}D{i:21}D{i:22}
+    D{i:0;formeditorZoom:0.66}
 }
 ##^##*/
