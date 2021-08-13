@@ -7,7 +7,7 @@ Button {
 
     // Customizando o botão:
     property url btnIconSource: "../../images/svg_images/minimize_icon.svg"
-    property color btnColorDefault: "#a11919"
+    property color btnColorDefault: "#b0101e"
     property color btnColorMouseOver: "#bf3434"
     property color btnColorClicked: "#800000"
 

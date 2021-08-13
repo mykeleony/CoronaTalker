@@ -115,7 +115,7 @@ Window {
             Rectangle {
                 id: topBar
                 height: 60
-                color: "#a11919"
+                color: "#b0101e"
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.top: parent.top
@@ -131,7 +131,7 @@ Window {
                     id: topBarDescription
                     y: 41
                     height: 25
-                    color: "#b12c2c"
+                    color: "#b0151c"
                     anchors.left: parent.left
                     anchors.right: parent.right
                     anchors.bottom: parent.bottom
@@ -271,7 +271,7 @@ Window {
                 Rectangle {
                     id: leftMenu
                     width: 70
-                    color: "#a11919"
+                    color: "#b0101e"
                     anchors.left: parent.left
                     anchors.top: parent.top
                     anchors.bottom: parent.bottom
@@ -404,7 +404,7 @@ Window {
                 
                 Rectangle {
                     id: rectangle
-                    color: "#b12c2c"
+                    color: "#b0151c"
                     anchors.left: leftMenu.right
                     anchors.right: parent.right
                     anchors.top: contentPages.bottom
@@ -416,12 +416,14 @@ Window {
                     
                     Label {
                         id: labelTopInfo1
+                        width: 70
                         color: "#e7e4e4"
-                        text: qsTr("Informação extra aqui!")
+                        text: qsTr("© 2021 Myke Leony dos Santos Amorim")
                         anchors.left: parent.left
                         anchors.right: parent.right
                         anchors.top: parent.top
                         anchors.bottom: parent.bottom
+                        horizontalAlignment: Text.AlignHCenter
                         anchors.topMargin: 0
                         anchors.rightMargin: 30
                         anchors.leftMargin: 10
@@ -480,6 +482,7 @@ Window {
         z: 0
     }
     */
+
     MouseArea {
         id: resizeLeft
         width: 10
@@ -537,6 +540,6 @@ Window {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:0.66}D{i:31}
+    D{i:0;formeditorZoom:0.66}
 }
 ##^##*/
