@@ -14,7 +14,7 @@ Button {
     property color btnColorMouseOver: "#bf3434"
     property color btnColorClicked: "#800000"
     property color activeMenuColor: "#ffffff"
-    property color activeMenuColorRight: "#b12c2c"
+    property color activeMenuColorRight: "#ed7272"
     property int iconWidth: 18
     property int iconHeight: 18
     property bool isActiveMenu: false
