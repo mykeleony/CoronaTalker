@@ -14,7 +14,7 @@ class JanelaPrincipal(QObject):
 
     @Slot(str)
     def escrever_boas_vindas(self, nome):
-        self.definirNome.emit('Olá, '+nome+'. Bem vindo(a) ao CoronaTalker.')
+        self.definirNome.emit('Olá, '+(nome.title())+'. Bem-vindo(a) ao CoronaTalker.')
 
 if __name__ == "__main__":
     app = QGuiApplication(sys.argv)
