@@ -21,6 +21,7 @@ Item {
             radius: 15
 
             CustomTextField {
+                id: campoNome
                 height: 40
                 anchors.left: parent.left
                 anchors.right: parent.right
@@ -43,6 +44,9 @@ Item {
                 anchors.rightMargin: 144
                 anchors.bottomMargin: 15
                 anchors.topMargin: 15
+                onClicked: {
+                    backend.escrever_boas_vindas(campoNome.text)
+                }
 
             }
 
@@ -99,7 +103,6 @@ Item {
                    anchors.topMargin: 50
                    maximumLineCount: 10000
                    textFormat: Text.RichText
-
                 }
 
                 Label {
@@ -124,10 +127,18 @@ Item {
         }
     }
 
+    Connections {
+        target: backend
+
+        function onDefinirNome (nome) {
+            home_titulo.text = nome
+        }
+    }
+
 }
 
 /*##^##
 Designer {
-    D{i:0;autoSize:true;formeditorZoom:0.75;height:480;width:800}D{i:9}
+    D{i:0;autoSize:true;formeditorZoom:0.75;height:480;width:800}
 }
 ##^##*/

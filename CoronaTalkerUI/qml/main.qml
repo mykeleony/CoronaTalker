@@ -203,7 +203,7 @@ Window {
                     }
                     
                     Label {
-                        id: label
+                        id: texto_boasvindas
                         color: "#ffffff"
                         text: qsTr("Bem-vindo(a) ao CoronaTalker!")
                         anchors.left: iconApp.right
@@ -535,9 +535,6 @@ Window {
     }
 
 }
-
-
-
 /*##^##
 Designer {
     D{i:0;formeditorZoom:0.66}
