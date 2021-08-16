@@ -6,6 +6,8 @@ from PySide2.QtGui import QGuiApplication
 from PySide2.QtQml import QQmlApplicationEngine
 from PySide2.QtCore import QObject, Slot, Signal
 
+import dados_covid
+
 class JanelaPrincipal(QObject):
     def __init__(self):
         QObject.__init__(self)
@@ -15,6 +17,12 @@ class JanelaPrincipal(QObject):
     @Slot(str)
     def escrever_boas_vindas(self, nome):
         self.definirNome.emit('Olá, '+(nome.title())+'. Bem-vindo(a) ao CoronaTalker.')
+
+    definirNumero = Signal(str)
+
+    @Slot(str)
+    def numerar_contagio_mundial_covid(self):
+        self.definirNumero.emit(dados_covid.buscar_dados_covid(0))
 
 if __name__ == "__main__":
     app = QGuiApplication(sys.argv)

@@ -15,7 +15,7 @@ TextField {
 
         property var dynamicColor: if(textField.focus){
                                         textField.hovered ? colorOnFocus : colorDefault
-                                   }else{
+                                   } else{
                                        textField.hovered ? colorMouseOver : colorDefault
                                    }
     }

@@ -15,7 +15,7 @@ ctx = ssl.create_default_context()
 ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
 
-def buscar_dados_covid():
+def buscar_dados_covid(indice):
     # Função que retorna os números de casos e mortes pela Covid-19 no mundo.
 
     # As informações serão retiradas do site da Wikipédia:
@@ -39,8 +39,8 @@ def buscar_dados_covid():
     # Agrupando as quatro informações em uma lista:
     dados_covid = list()
     dados_covid.extend((casos_mundo, mortes_mundo, casos_brasil, mortes_brasil))
-    
-    return dados_covid
+
+    return dados_covid[indice]
 
 if __name__ == '__main__':
-    buscar_dados_covid()
+    buscar_dados_covid(0)

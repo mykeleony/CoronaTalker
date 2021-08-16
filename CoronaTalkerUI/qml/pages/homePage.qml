@@ -31,6 +31,7 @@ Item {
                 anchors.bottomMargin: 15
                 anchors.topMargin: 15
                 anchors.leftMargin: 10
+
             }
 
             CustomButton {
