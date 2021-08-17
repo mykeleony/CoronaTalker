@@ -34,6 +34,19 @@ class JanelaPrincipal(QObject):
         num_mortes_mundo = dados_covid.buscar_dados_covid(1)
         self.mostrarMortesCovidMundial.emit(num_mortes_mundo)
 
+    mostrarContaminadosCovidBrasil = Signal(str)
+
+    @Slot(str)
+    def trazer_contaminados_covid_brasil(self, indice):
+        num_contaminados_brasil = dados_covid.buscar_dados_covid(2)
+        self.mostrarContaminadosCovidBrasil.emit(num_contaminados_brasil)
+
+    mostrarMortesCovidBrasil = Signal(str)
+
+    @Slot(str)
+    def trazer_mortes_covid_brasil(self, indice):
+        num_mortes_brasil = dados_covid.buscar_dados_covid(3)
+        self.mostrarMortesCovidBrasil.emit(num_mortes_brasil)
 
 if __name__ == "__main__":
     app = QGuiApplication(sys.argv)
