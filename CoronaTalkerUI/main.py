@@ -24,6 +24,7 @@ class JanelaPrincipal(QObject):
 
     @Slot (str)
     def trazer_contaminados_covid_mundial(self, indice):
+        # Envia o número de contaminados por Covid-19 no mundo para uma label na UI.
         num_contaminados_mundo = dados_covid.buscar_dados_covid(0)
         self.mostrarContaminadosCovidMundial.emit(num_contaminados_mundo)
 
@@ -31,6 +32,7 @@ class JanelaPrincipal(QObject):
 
     @Slot(str)
     def trazer_mortes_covid_mundial(self, indice):
+        # Envia o número de mortes por Covid-19 no mundo para uma label na UI.
         num_mortes_mundo = dados_covid.buscar_dados_covid(1)
         self.mostrarMortesCovidMundial.emit(num_mortes_mundo)
 
@@ -38,6 +40,7 @@ class JanelaPrincipal(QObject):
 
     @Slot(str)
     def trazer_contaminados_covid_brasil(self, indice):
+        # Envia o número de contaminados por Covid-19 no Brasil para uma label na UI.
         num_contaminados_brasil = dados_covid.buscar_dados_covid(2)
         self.mostrarContaminadosCovidBrasil.emit(num_contaminados_brasil)
 
@@ -45,6 +48,7 @@ class JanelaPrincipal(QObject):
 
     @Slot(str)
     def trazer_mortes_covid_brasil(self, indice):
+        # Envia o número de mortes por Covid-19 no Brasil para uma label na UI.
         num_mortes_brasil = dados_covid.buscar_dados_covid(3)
         self.mostrarMortesCovidBrasil.emit(num_mortes_brasil)
 
