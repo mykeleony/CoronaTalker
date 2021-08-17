@@ -43,4 +43,4 @@ def buscar_dados_covid(indice):
     return dados_covid[indice]
 
 if __name__ == '__main__':
-    buscar_dados_covid(0)
+    print(buscar_dados_covid(0))

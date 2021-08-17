@@ -12,17 +12,28 @@ class JanelaPrincipal(QObject):
     def __init__(self):
         QObject.__init__(self)
 
+    # Manipulador para levar a função de escrita de boas vindas à interface gráfica.
     definirNome = Signal(str)
 
     @Slot(str)
     def escrever_boas_vindas(self, nome):
-        self.definirNome.emit('Olá, '+(nome.title())+'. Bem-vindo(a) ao CoronaTalker.')
+        # Exibe uma mensagem personalizada na página inicial.
+        self.definirNome.emit('Olá, ' + (nome.title()) + '. Bem-vindo(a) ao CoronaTalker.')
 
-    definirNumero = Signal(str)
+    mostrarContaminadosCovidMundial = Signal(str)
+
+    @Slot (str)
+    def trazer_contaminados_covid_mundial(self, indice):
+        num_contaminados_mundo = dados_covid.buscar_dados_covid(0)
+        self.mostrarContaminadosCovidMundial.emit(num_contaminados_mundo)
+
+    mostrarMortesCovidMundial = Signal(str)
 
     @Slot(str)
-    def numerar_contagio_mundial_covid(self):
-        self.definirNumero.emit(dados_covid.buscar_dados_covid(0))
+    def trazer_mortes_covid_mundial(self, indice):
+        num_mortes_mundo = dados_covid.buscar_dados_covid(1)
+        self.mostrarMortesCovidMundial.emit(num_mortes_mundo)
+
 
 if __name__ == "__main__":
     app = QGuiApplication(sys.argv)
