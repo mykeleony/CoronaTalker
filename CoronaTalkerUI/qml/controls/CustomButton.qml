@@ -15,7 +15,8 @@ Button {
 
         property var dynamicColor: if(button.down) {
                                        button.down ? colorPressed : colorDefault
-                                   } else {
+                                   }
+                                   else {
                                        button.hovered ? colorMouseOver : colorDefault
                                    }
     }

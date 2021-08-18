@@ -18,7 +18,15 @@ class JanelaPrincipal(QObject):
     @Slot(str)
     def escrever_boas_vindas(self, nome):
         # Exibe uma mensagem personalizada na página inicial.
-        self.definirNome.emit('Olá, ' + (nome.title()) + '. Bem-vindo(a) ao CoronaTalker.')
+
+        if nome == '':
+            self.definirNome.emit('Ops! Parece que o campo "nome" está vazio. Preencha-o e tente novamente.')
+
+        elif len(nome) > 35:
+            self.definirNome.emit('O nome inserido é muito grande! Por favor, insira um menor e tente novamente.')
+
+        else:
+            self.definirNome.emit('Olá, ' + (nome.title()) + '. Bem-vindo(a) ao CoronaTalker.')
 
     mostrarContaminadosCovidMundial = Signal(str)
 
