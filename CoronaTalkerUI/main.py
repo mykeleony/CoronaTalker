@@ -20,7 +20,7 @@ class JanelaPrincipal(QObject):
         # Exibe uma mensagem personalizada na página inicial.
 
         if nome == '':
-            self.definirNome.emit('Ops! Parece que o campo "nome" está vazio. Preencha-o e tente novamente.')
+            self.definirNome.emit('Ops! Parece que o campo "nome" está vazio. Por favor, preencha-o e tente novamente.')
 
         elif len(nome) > 35:
             self.definirNome.emit('O nome inserido é muito grande! Por favor, insira um menor e tente novamente.')
