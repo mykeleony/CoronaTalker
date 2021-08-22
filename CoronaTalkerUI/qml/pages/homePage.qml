@@ -86,19 +86,23 @@ Item {
                 anchors.right: parent.right
                 anchors.top: parent.top
                 anchors.bottom: parent.bottom
+                focusPolicy: Qt.NoFocus
+                wheelEnabled: true
+                clip: true
                 anchors.rightMargin: 30
                 anchors.leftMargin: 30
                 anchors.bottomMargin: 10
                 anchors.topMargin: 40
 
                 Text {
-                    id: texto_home
-                    width: 50
-                    color: "#FFFFFF"
-                    text: "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:8.5pt;\"><br /></span><span style=\" font-family:'MS Shell Dlg 2'; font-size:8.5pt; font-weight:600;\">LICENÇA MIT</span></p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:8.5pt;\">Versão 1, 13 Agosto 2021</span></p>\n<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8.5pt;\"><br /></p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:8.5pt;\">Copyright © 2021 </span><span style=\" font-family:'MS Shell Dlg 2'; font-size:8.5pt; font-weight:600;\">Myke Leony dos Santos Amorim</span></p>\n<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8.5pt; font-weight:600;\"><br /></p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:8.5pt; font-weight:600; color:#f7a6a6;\">Atenção</span><span style=\" font-family:'MS Shell Dlg 2'; font-size:8.5pt;\">: Este projeto foi criado com as ferramentas de Código Aberto da Qt Company.</span></p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:8.5pt;\">Este projeto pode ser utilizado para fins educacionais ou pessoais e não-comerciais. </span></p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:8.5pt; font-weight:600;\">Se o intuito é de </span><span style=\" font-family:'MS Shell Dlg 2'; font-size:8.5pt; font-weight:600; color:#f7a6a6;\">uso comercial</span><span style=\" font-family:'MS Shell Dlg 2'; font-size:8.5pt; font-weight:600;\">, você deverá comprar uma licença em &quot;https://www.qt.io&quot;.</span></p></body></html>"
-                    anchors.fill: parent
+                   id: texto_home
+                   width: 50
+                   color: "#FFFFFF"
+                   text: "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:8.5pt;\"><br /></span><span style=\" font-family:'MS Shell Dlg 2'; font-size:8.5pt; font-weight:600;\">LICENÇA MIT</span></p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:8.5pt;\">Versão 1, 13 Agosto 2021</span></p>\n<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8.5pt;\"><br /></p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:8.5pt;\">Copyright © 2021 </span><span style=\" font-family:'MS Shell Dlg 2'; font-size:8.5pt; font-weight:600;\">Myke Leony dos Santos Amorim</span></p>\n<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'MS Shell Dlg 2'; font-size:8.5pt; font-weight:600;\"><br /></p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:8.5pt; font-weight:600; color:#f7a6a6;\">Atenção</span><span style=\" font-family:'MS Shell Dlg 2'; font-size:8.5pt;\">: Este projeto foi criado com as ferramentas de Código Aberto da Qt Company.</span></p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:8.5pt;\">Este projeto pode ser utilizado para fins educacionais ou pessoais e não-comerciais. </span></p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:8.5pt; font-weight:600;\">Se o intuito é de </span><span style=\" font-family:'MS Shell Dlg 2'; font-size:8.5pt; font-weight:600; color:#f7a6a6;\">uso comercial</span><span style=\" font-family:'MS Shell Dlg 2'; font-size:8.5pt; font-weight:600;\">, você deverá comprar uma licença em &quot;https://www.qt.io&quot;.</span></p></body></html>"
+                   anchors.fill: parent
                    font.pixelSize: 12
-                   anchors.rightMargin: 204
+                   wrapMode: Text.WordWrap
+                   anchors.rightMargin: 72
                    anchors.bottomMargin: 0
                    anchors.leftMargin: 0
                    anchors.topMargin: 50
@@ -118,6 +122,7 @@ Item {
                     anchors.right: parent.right
                     anchors.top: parent.top
                     anchors.bottom: parent.bottom
+                    wrapMode: Text.WordWrap
                     anchors.bottomMargin: 0
                     anchors.rightMargin: 10
                     anchors.leftMargin: 0
