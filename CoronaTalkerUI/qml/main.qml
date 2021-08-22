@@ -8,9 +8,9 @@ import "controls"
 Window {
     id: janelaPrincipal
     width: 1000
-    minimumWidth: 800
+    minimumWidth: 900
     height: 580
-    minimumHeight: 500
+    minimumHeight: 550
     visible: true
     color: "#00000000"
     title: qsTr("CoronaTalker")
