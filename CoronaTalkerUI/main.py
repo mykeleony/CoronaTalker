@@ -6,17 +6,26 @@ from PySide2.QtGui import QGuiApplication
 from PySide2.QtQml import QQmlApplicationEngine
 from PySide2.QtCore import QObject, Slot, Signal
 
+import sqlite3
+
 import dados_covid
 
 class JanelaPrincipal(QObject):
     def __init__(self):
         QObject.__init__(self)
 
+    def carregar_dados (self):
+        #Realiza a conexão com o banco de dados SQLite3 e preenche a tabela na UI:
+        pass
+
+    def trazer_perguntas (self):
+        self.connect(self.carregar_dados)
+
     # Manipulador para levar a função de escrita de boas vindas à interface gráfica.
     definirNome = Signal(str)
 
     @Slot(str)
-    def escrever_boas_vindas(self, nome):
+    def escrever_boas_vindas (self, nome):
         # Exibe uma mensagem personalizada na página inicial.
 
         if nome == '':
