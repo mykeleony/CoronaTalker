@@ -14,12 +14,16 @@ class JanelaPrincipal(QObject):
     def __init__(self):
         QObject.__init__(self)
 
-    def carregar_dados (self):
+    def carregar_dados_banco (self):
         #Realiza a conexão com o banco de dados SQLite3 e preenche a tabela na UI:
-        pass
+        bd = sqlite3.connect('q&a_coronavirus.sqlite')
+        cur = bd.cursor()
 
-    def trazer_perguntas (self):
-        self.connect(self.carregar_dados)
+        result = cur.execute('SELECT * FROM Perguntas_CoronaTalker')
+
+        #self
+    def trazer_perguntas_banco (self):
+        self.connect(self.carregar_dados_banco)
 
     # Manipulador para levar a função de escrita de boas vindas à interface gráfica.
     definirNome = Signal(str)

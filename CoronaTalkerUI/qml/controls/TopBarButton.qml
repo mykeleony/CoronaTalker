@@ -14,7 +14,7 @@ Button {
     QtObject {
         id: internal
 
-        // Mudança de cor em Mouse Over e Mouse Click:
+        // Mudança de cor emTabl Mouse Over e Mouse Click:
         property var dinamycColor: if(btnTopBar.down) {
                                        btnTopBar.down ? btnColorClicked : btnColorDefault
                                    } else {

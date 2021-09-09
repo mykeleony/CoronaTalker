@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.12
 import QtQuick.Controls 2.15
 import "../controls"
 
@@ -26,6 +26,19 @@ Item {
         anchors.bottomMargin: 20
         anchors.rightMargin: 20
         anchors.topMargin: 20
+
+        CustomButton {
+            id: button
+            x: 207
+            y: 390
+            width: 133
+            height: 40
+            text: qsTr("Mostrar")
+            anchors.bottom: parent.bottom
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.bottomMargin: 40
+            visible: true
+        }
     }
 
 }

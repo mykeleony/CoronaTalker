@@ -124,7 +124,7 @@ Item {
                     anchors.bottom: parent.bottom
                     wrapMode: Text.WordWrap
                     anchors.bottomMargin: 0
-                    anchors.rightMargin: 10
+                    anchors.rightMargin: 0
                     anchors.leftMargin: 0
                     anchors.topMargin: 0
                 }
