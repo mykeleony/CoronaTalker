@@ -39,6 +39,14 @@ Item {
             anchors.bottomMargin: 40
             visible: true
         }
+
+        ScrollView {
+            id: tabela_perguntas
+            x: 44
+            y: 18
+            width: 516
+            height: 312
+        }
     }
 
 }
